@@ -2,10 +2,14 @@ package selfwork16.task01;
 
 public class WriteArray implements Runnable {
 
-    int [] array;
-    int from;
-    int to;
+    private int [] array;
+    private int from;
+    private int to;
+    private double average;
 
+    public double getAverage() {
+        return average;
+    }
 
     public WriteArray(int[] array, int from, int to) {
         this.array = array;
@@ -15,12 +19,12 @@ public class WriteArray implements Runnable {
 
     @Override
     public void run() {
-        double average = 0;
+        double sumArray = 0;
+        int a = to - from;
         for(int i = from; i < to; i++){
-            average = average + array[i];
+            sumArray += array[i];
         }
-        average = average / to;
-        System.out.println(average);
-
+        average = sumArray / a;
+        //System.out.println("Thread average: " + average);
     }
 }
